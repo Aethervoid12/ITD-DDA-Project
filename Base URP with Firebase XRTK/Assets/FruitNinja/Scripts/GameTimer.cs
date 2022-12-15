@@ -9,7 +9,7 @@ public class GameTimer : MonoBehaviour
 {
     //Set the first game timer at the Inspector.
     //Set the second timer after the reset is at below "else" timeValue.
-    public float timeValue = 90;
+    public float timeValue;
     public TextMeshProUGUI timeText;
     // Update is called once per frame
     void Update()
@@ -21,7 +21,7 @@ public class GameTimer : MonoBehaviour
         else
         {
             //**Here**//
-            timeValue = 30;
+            timeValue = 5;
         }
 
         DisplayTime(timeValue);
@@ -42,7 +42,7 @@ public class GameTimer : MonoBehaviour
     //Reset the game not only the score but also the timing.
     public void RestartTime()
     {
-        timeValue = 30;
+        timeValue = 5;
         DisplayTime(timeValue);
     }
 }

@@ -6,9 +6,14 @@ public class FruitSpawner : MonoBehaviour
 {
     public GameObject[] fruitPrefab;
     [Range(0.25f, 1f)]
+    // Lower the number, the faster it spawn.
     public float lauchSpeed;
     public AudioSource soundEffect;
 
+    public int minVelocityY;
+    public int maxVelocityY;
+
+    private int randomVelocityY;
     void Start()
     {
         StartCoroutine(SpawnFruit());
@@ -17,11 +22,13 @@ public class FruitSpawner : MonoBehaviour
     {
         while(true)
         {
+            randomVelocityY = Random.Range(minVelocityY, maxVelocityY);
 
             GameObject go = Instantiate(fruitPrefab[Random.Range(0, fruitPrefab.Length)]);
             Rigidbody temp = go.GetComponent<Rigidbody>();
 
-            temp.velocity = new Vector3(0f, 5f, -5f);
+            //temp.velocity = new Vector3(0f, 5-10f, 10f);
+            temp.velocity = new Vector3(0f, randomVelocityY, 10f);
             temp.angularVelocity = new Vector3(Random.Range(-5f, 5f), 0f, Random.Range(-5f, 5f));
             temp.useGravity = true;
 

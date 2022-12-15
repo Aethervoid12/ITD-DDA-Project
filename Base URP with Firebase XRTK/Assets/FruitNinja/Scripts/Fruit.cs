@@ -9,6 +9,9 @@ public class Fruit : MonoBehaviour
     public void Update()
     {
         Invoke("SelfDestruct", 5.0f);
+        //Only use these two int speed.
+        // 1 = normal falling speed.
+        // 0.5 = slow falling speed.
         Time.timeScale = num;
     }
     public void SelfDestruct()
