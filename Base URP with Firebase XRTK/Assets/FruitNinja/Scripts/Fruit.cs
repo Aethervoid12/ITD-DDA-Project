@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class Fruit : MonoBehaviour
 {
+    [Range(0, 1)]
+    public float num = 0;
     public void Update()
     {
         Invoke("SelfDestruct", 5.0f);
+        Time.timeScale = num;
     }
     public void SelfDestruct()
     {

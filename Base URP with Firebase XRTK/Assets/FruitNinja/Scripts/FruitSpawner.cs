@@ -17,6 +17,7 @@ public class FruitSpawner : MonoBehaviour
     {
         while(true)
         {
+
             GameObject go = Instantiate(fruitPrefab[Random.Range(0, fruitPrefab.Length)]);
             Rigidbody temp = go.GetComponent<Rigidbody>();
 
