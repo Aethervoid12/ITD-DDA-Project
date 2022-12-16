@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 8683452840c144dada95f08b3d775ae3
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - BaseballPrefab: {fileID: 5377515186637133713, guid: 0f65eb59decb3445abee39151df85acf, type: 3}
+  - TincanPrefab: {fileID: 7351708966413802197, guid: d2d9266f6f1b94fe3b3f923b59ff75c5, type: 3}
+  - GameoverMessage: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
