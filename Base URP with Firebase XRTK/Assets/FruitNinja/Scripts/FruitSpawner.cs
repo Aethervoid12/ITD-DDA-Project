@@ -14,9 +14,15 @@ public class FruitSpawner : MonoBehaviour
     public int maxVelocityY;
 
     private int randomVelocityY;
-    void Start()
+    public void StartGame()
     {
         StartCoroutine(SpawnFruit());
+        Debug.Log("Start");
+        lauchSpeed = 1f;
+    }
+    public void FinalGame()
+    {
+        lauchSpeed = 0.25f;
     }
     IEnumerator SpawnFruit()
     {
@@ -39,5 +45,6 @@ public class FruitSpawner : MonoBehaviour
             yield return new WaitForSeconds(lauchSpeed);
             soundEffect.Play();
         }
+        
     }
 }

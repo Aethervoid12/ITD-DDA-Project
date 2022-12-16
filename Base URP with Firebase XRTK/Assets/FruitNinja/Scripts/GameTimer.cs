@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEngine.ParticleSystem;
 
 public class GameTimer : MonoBehaviour
 {
@@ -11,6 +10,8 @@ public class GameTimer : MonoBehaviour
     //Set the second timer after the reset is at below "else" timeValue.
     public float timeValue;
     public TextMeshProUGUI timeText;
+    public GameObject SlashItManager;
+    public GameObject FruitSpawner;
     // Update is called once per frame
     void Update()
     {
@@ -21,10 +22,15 @@ public class GameTimer : MonoBehaviour
         else
         {
             //**Here**//
-            timeValue = 5;
+            timeValue = 60;
         }
 
         DisplayTime(timeValue);
+
+        if (timeValue < 12)
+        {
+            FruitSpawner.GetComponent<FruitSpawner>().FinalGame();
+        }
     }
 
     void DisplayTime(float timeToDisplay)
@@ -32,6 +38,7 @@ public class GameTimer : MonoBehaviour
         if (timeToDisplay < 0)
         {
             timeToDisplay = 0;
+            SlashItManager.GetComponent<SlashItManager>().EndGame();
         }
 
         float minutes = Mathf.FloorToInt(timeToDisplay / 60);
@@ -42,7 +49,7 @@ public class GameTimer : MonoBehaviour
     //Reset the game not only the score but also the timing.
     public void RestartTime()
     {
-        timeValue = 5;
+        timeValue = 60;
         DisplayTime(timeValue);
     }
 }

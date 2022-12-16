@@ -19,6 +19,9 @@ public class MeshDestroy : MonoBehaviour
     public int NumberOfCuts = 0;
     public int MaximumCuts = 5;
 
+    [Range(0, 1)]
+    public float fallingSpeed = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,8 +36,35 @@ public class MeshDestroy : MonoBehaviour
             Debug.Log("Cut Mesh");
             DestroyMesh();
         }
+
+        Invoke("SelfDestruct", 5.0f);
+        //Only use these two int speed.
+        // 1 = normal falling speed.
+        // 0.5 = slow falling speed.
+        Time.timeScale = fallingSpeed;
+    }
+    public void SelfDestruct()
+    {
+        Destroy(gameObject);
+        Debug.Log("Fruit Self-Destruct!!");
+    }
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Floor")
+        {
+            Destroy(gameObject);
+        }
+    }
+    public void FrostPill()
+    {
+        fallingSpeed = 0.5f;
+        Invoke("Normal", 10.0f);
     }
 
+    public void Normal()
+    {
+        fallingSpeed = 1f;
+    }
 
     private void DestroyMesh()
     {
