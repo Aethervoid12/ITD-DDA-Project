@@ -35,8 +35,15 @@ The game loops every round until the player fails to knock down 16 out of 18 can
 
 ### Key Controls
 #### Player Controls
+Moving around: 
+
+Teleporting:
 
 #### Interacting with objects
+Grabbing objects:
+
+Throwing objects:
+
 
 ### Platform(s) required to run the application
 
@@ -55,8 +62,11 @@ for each mini game, and etc... The information will be recorded and presented in
 ## Credits / References
 
 Model of the carnival stall: https://sketchfab.com/3d-models/side-stalls-fa330c8f231d42ef933e420eb08fe8c8
+
 Model of the baseball: https://sketchfab.com/3d-models/worn-baseball-ball-fdf3de6ae225421ea78961b897b9608a
+
 Model of the tin can: https://sketchfab.com/3d-models/tin-can-640b0c8287274629a7f4ff3ce74a5999
+
 Model of the instruction / leader board: https://sketchfab.com/3d-models/game-leaderboard-e523e6e113c54452956b9407c074ae3f
 
 
