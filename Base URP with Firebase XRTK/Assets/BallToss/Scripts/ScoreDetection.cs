@@ -75,6 +75,7 @@ public class ScoreDetection : MonoBehaviour
             if (baseballUsed == 3)
             {
                 //Display game over message
+                Debug.Log("Game Ended");
                 EndGame();
             }
         }
@@ -91,12 +92,15 @@ public class ScoreDetection : MonoBehaviour
     void EndGame()
     {
         Firebase.Auth.FirebaseUser currentUser = auth.CurrentUser;
+        Debug.Log("User Recorded");
         if (currentUser != null)
         {
             userID = currentUser.UserId;
             username = currentUser.DisplayName;
+            Debug.Log(username + userID);
             dbPlayerStatsReference.Child(userID).Child("highScore").GetValueAsync().ContinueWithOnMainThread(task =>
             {
+                Debug.Log("Database Recorded");
                 if (task.IsFaulted)
                 {
                     Debug.LogWarning(message: $"Failed to register task");
@@ -105,18 +109,18 @@ public class ScoreDetection : MonoBehaviour
                 {
                     DataSnapshot snapshot = task.Result;
                     highScore = int.Parse(snapshot.GetRawJsonValue());
-                    if (score >= highScore)
-                    {
-                        highScore = score;
-                        var epochStart = new System.DateTime(1970, 1, 1, 8, 0, 0, System.DateTimeKind.Utc);
-                        var timestamp = (System.DateTime.UtcNow - epochStart).TotalSeconds;
-                        leaderboardDate = (int)timestamp;
-                        WriteNewScore(userID, username, highScore, leaderboardDate);
-                        Debug.Log(userID + " + " + username + " + " + highScore);
-
-                    }
                 }
             });
+            if (score >= highScore)
+            {
+                highScore = score;
+                var epochStart = new System.DateTime(1970, 1, 1, 8, 0, 0, System.DateTimeKind.Utc);
+                var timestamp = (System.DateTime.UtcNow - epochStart).TotalSeconds;
+                leaderboardDate = (int)timestamp;
+                WriteNewScore(userID, username, highScore, leaderboardDate);
+                Debug.Log(userID + " + " + username + " + " + highScore);
+
+            }
 
         }
     }
