@@ -3,7 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+<<<<<<< Updated upstream
+  - Floor
+  - Blade
+  - Fruits
+=======
+  - Baseball
+  - TinCan
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
