@@ -105,18 +105,18 @@ public class ScoreDetection : MonoBehaviour
                 {
                     DataSnapshot snapshot = task.Result;
                     highScore = int.Parse(snapshot.GetRawJsonValue());
+                    if (score >= highScore)
+                    {
+                        highScore = score;
+                        var epochStart = new System.DateTime(1970, 1, 1, 8, 0, 0, System.DateTimeKind.Utc);
+                        var timestamp = (System.DateTime.UtcNow - epochStart).TotalSeconds;
+                        leaderboardDate = (int)timestamp;
+                        WriteNewScore(userID, username, highScore, leaderboardDate);
+                        Debug.Log(userID + " + " + username + " + " + highScore);
+
+                    }
                 }
             });
-            if (score >= highScore)
-            {
-                highScore = score;
-                var epochStart = new System.DateTime(1970, 1, 1, 8, 0, 0, System.DateTimeKind.Utc);
-                var timestamp = (System.DateTime.UtcNow - epochStart).TotalSeconds;
-                leaderboardDate = (int)timestamp;
-                WriteNewScore(userID, username, highScore, leaderboardDate);
-                Debug.Log(userID + " + " + username + " + " + highScore);
-
-            }
         }
     }
 }
