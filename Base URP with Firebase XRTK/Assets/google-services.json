@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:980286879925:android:0418eaeddbb3633742e6fc",
+        "mobilesdk_app_id": "1:980286879925:android:be6fbd9731c5c7b842e6fc",
         "android_client_info": {
-          "package_name": "fruitninjaddaitd2.test"
+          "package_name": "com.carnivalgames.balltossandfruitslash"
         }
       },
       "oauth_client": [
