@@ -48,6 +48,10 @@ Throwing objects:
 ### Platform(s) required to run the application
 
 ### Limitations / Bugs in the application
+#### Boxy Ninja Slasher Game
+The trajectory of the mesh prefabs cutting is not completely correct.
+(If I cut the cube vertically, it would split apart differently not exactly a vertical slice.)
+
 
 ## DDA Deliverables
 ### Application Flow
