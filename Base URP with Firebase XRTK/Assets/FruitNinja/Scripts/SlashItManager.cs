@@ -6,6 +6,8 @@ public class SlashItManager : MonoBehaviour
 {
     public GameObject StartMenu;
     public GameObject FruitSpawner;
+    public GameObject SlowFruitSpawner1;
+    public GameObject SlowFruitSpawner2;
     public GameObject Timer;
     public GameObject Score;
     public GameObject FinalScore;
@@ -26,6 +28,24 @@ public class SlashItManager : MonoBehaviour
         Score.SetActive(false);
         FinalScore.SetActive(true);
         FruitSpawner.SetActive(false);
+    }
 
+    public void FrostPill()
+    {
+        FruitSpawner.SetActive(false);
+        SlowFruitSpawner1.SetActive(true);
+        SlowFruitSpawner2.SetActive(true);
+
+        SlowFruitSpawner1.GetComponent<SlowFruitSpawner>().StartGame();
+        SlowFruitSpawner2.GetComponent<SlowFruitSpawner>().StartGame();
+        Invoke("Normal", 5.0f);
+    }
+    public void Normal()
+    {
+        FruitSpawner.SetActive(true);
+        SlowFruitSpawner1.SetActive(false);
+        SlowFruitSpawner2.SetActive(false);
+
+        FruitSpawner.GetComponent<FruitSpawner>().StartGame();
     }
 }

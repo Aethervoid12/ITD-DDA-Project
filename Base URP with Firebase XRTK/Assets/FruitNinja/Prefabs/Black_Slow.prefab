@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 2740695847213032768}
   - component: {fileID: 2740695847213032771}
   m_Layer: 0
-  m_Name: Sphere
-  m_TagString: Untagged
+  m_Name: Black_Slow
+  m_TagString: Black
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -133,4 +133,4 @@ MonoBehaviour:
   BladeExit: 0
   NumberOfCuts: 0
   MaximumCuts: 5
-  fallingSpeed: 1
+  fallingSpeed: 0.5

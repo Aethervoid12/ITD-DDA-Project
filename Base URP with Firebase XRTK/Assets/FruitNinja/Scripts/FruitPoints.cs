@@ -12,9 +12,11 @@ public class FruitPoints : MonoBehaviour
     public bool PowerUpBoost = false;
 
     public AudioSource slashEffect;
+
+    public GameObject SlashItManager;
     void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject.name == "Red")
+        if (collider.gameObject.tag == "Red")
         {
             slashEffect.Play();
             Debug.Log("Cut Red");
@@ -29,7 +31,7 @@ public class FruitPoints : MonoBehaviour
                 cutPoints = cutPoints + 1;
             }
         }
-        if (collider.gameObject.name == "Blue")
+        if (collider.gameObject.tag == "Blue")
         {
             slashEffect.Play();
             Debug.Log("Cut Blue");
@@ -44,7 +46,7 @@ public class FruitPoints : MonoBehaviour
                 cutPoints = cutPoints + 1;
             }
         }
-        if (collider.gameObject.name == "Green")
+        if (collider.gameObject.tag == "Green")
         {
             slashEffect.Play();
             Debug.Log("Cut Green");
@@ -59,7 +61,7 @@ public class FruitPoints : MonoBehaviour
                 cutPoints = cutPoints + 1;
             }
         }
-        if (collider.gameObject.name == "Black")
+        if (collider.gameObject.tag == "Black")
         {
             slashEffect.Play();
             Debug.Log("Cut Black");
@@ -67,7 +69,7 @@ public class FruitPoints : MonoBehaviour
             //gameObject.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
             cutPoints = cutPoints - 2;
         }
-        if (collider.gameObject.name == "FrostPill")
+        if (collider.gameObject.tag == "FrostPill")
         {
             slashEffect.Play();
             Debug.Log("Cut FrostPill");
@@ -76,16 +78,16 @@ public class FruitPoints : MonoBehaviour
             if (PowerUpBoost == true)
             {
                 cutPoints = cutPoints + 5;
-                MeshDestroy.GetComponent<MeshDestroy>().FrostPill();
+                SlashItManager.GetComponent<SlashItManager>().FrostPill();
             }
             else
             {
                 cutPoints = cutPoints + 2;
-                MeshDestroy.GetComponent<MeshDestroy>().FrostPill();
+                SlashItManager.GetComponent<SlashItManager>().FrostPill();
             }
 
         }
-        if (collider.gameObject.name == "PowerUp")
+        if (collider.gameObject.tag == "PowerUp")
         {
             slashEffect.Play();
             Debug.Log("Cut Powerup");
