@@ -52,6 +52,10 @@ Throwing objects:
 The trajectory of the mesh prefabs cutting is not completely correct.
 (If I cut the cube vertically, it would split apart differently not exactly a vertical slice.)
 
+There is only 1 gaming option in this project.
+(Fruit Ninja has different options (Classic, Arcade, Zen)
+
+
 
 ## DDA Deliverables
 ### Application Flow
