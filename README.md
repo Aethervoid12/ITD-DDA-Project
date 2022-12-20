@@ -6,7 +6,7 @@ In CarnivalVR, player can explore and enjoy various types of its features and in
 players to react fast or equipped with some luck to achieve high score.
 
 The entire experience is short and sweet (takes about less than 20 minutes to finish), so the player won't have to worry to much about motion sickness for
-wearing the VR headset for too long.
+wearing the VR headset too long.
 
 ## ITD Deliverables
 ### List of CarnivalVR Features and its Interactions
