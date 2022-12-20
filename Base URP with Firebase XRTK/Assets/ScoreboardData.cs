@@ -18,6 +18,7 @@ public class ScoreboardData : MonoBehaviour
     public GameObject scoreElement;
     public Transform scoreboardContent;
     public GameObject setScore;
+    public string leaderboardType;
 
     private void Awake()
     {
@@ -38,7 +39,7 @@ public class ScoreboardData : MonoBehaviour
     private IEnumerator LoadScoreboardData()
     {
         //collects score data from firebase, then converts it into data displayable on the Unity Scoreboard
-        var DBTask = DBReference.Child("ballTossHighScores").OrderByChild("highScore").GetValueAsync();
+        var DBTask = DBReference.Child(leaderboardType).OrderByChild("highScore").GetValueAsync();
 
         yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
 

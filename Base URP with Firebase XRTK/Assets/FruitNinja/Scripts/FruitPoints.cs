@@ -1,19 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
+using System.Threading.Tasks;
 using UnityEngine;
+using TMPro;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using Firebase;
+using Firebase.Database;
+using Firebase.Auth;
+using Firebase.Extensions;
 
 public class FruitPoints : MonoBehaviour
 {
+    Firebase.Auth.FirebaseAuth auth;
+    DatabaseReference mDatabaseRef;
+    DatabaseReference dbPlayerStatsReference;
     public int cutPoints;
     public TextMeshProUGUI ScorePoints;
     public TextMeshProUGUI FinalScore;
     public GameObject MeshDestroy;
     public bool PowerUpBoost = false;
-
+    int highScore = 0;
+    int leaderboardDate;
+    string username;
+    string userID;
     public AudioSource slashEffect;
 
     public GameObject SlashItManager;
+
+    private void Awake()
+    {
+        auth = FirebaseAuth.DefaultInstance;
+        mDatabaseRef = FirebaseDatabase.DefaultInstance.RootReference;
+        dbPlayerStatsReference = FirebaseDatabase.DefaultInstance.GetReference("fruitSlashHighScores");
+    }
     void OnTriggerEnter(Collider collider)
     {
         if (collider.gameObject.tag == "Red")
@@ -111,5 +131,48 @@ public class FruitPoints : MonoBehaviour
     {
         PowerUpBoost = false;
     }
+    private void WriteNewScore(string userId, string username, int highScore, int leaderboardDate)
+    {
+        Scores score = new Scores(username, highScore, leaderboardDate);
+        string json = JsonUtility.ToJson(score);
+
+        mDatabaseRef.Child("fruitSlashHighScores").Child(userId).SetRawJsonValueAsync(json);
+    }
+    public void RecordPoints()
+    {
+        Firebase.Auth.FirebaseUser currentUser = auth.CurrentUser;
+        Debug.Log("User Recorded");
+        if (currentUser != null)
+        {
+            userID = currentUser.UserId;
+            username = currentUser.DisplayName;
+            Debug.Log(username + userID);
+            dbPlayerStatsReference.Child(userID).Child("highScore").GetValueAsync().ContinueWithOnMainThread(task =>
+            {
+                Debug.Log("Database Recorded");
+                if (task.IsFaulted)
+                {
+                    Debug.LogWarning(message: $"Failed to register task");
+                }
+                else if (task.IsCompleted)
+                {
+                    DataSnapshot snapshot = task.Result;
+                    highScore = int.Parse(snapshot.GetRawJsonValue());
+                }
+            });
+            if (cutPoints >= highScore)
+            {
+                highScore = cutPoints;
+                var epochStart = new System.DateTime(1970, 1, 1, 8, 0, 0, System.DateTimeKind.Utc);
+                var timestamp = (System.DateTime.UtcNow - epochStart).TotalSeconds;
+                leaderboardDate = (int)timestamp;
+                WriteNewScore(userID, username, highScore, leaderboardDate);
+                Debug.Log(userID + " + " + username + " + " + highScore);
+
+            }
+
+        }
+    }
+
 
 }

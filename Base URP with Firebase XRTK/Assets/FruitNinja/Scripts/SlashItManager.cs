@@ -11,6 +11,7 @@ public class SlashItManager : MonoBehaviour
     public GameObject Timer;
     public GameObject Score;
     public GameObject FinalScore;
+    public GameObject FruitPoints;
 
     public void StartGame()
     {
@@ -28,6 +29,7 @@ public class SlashItManager : MonoBehaviour
         Score.SetActive(false);
         FinalScore.SetActive(true);
         FruitSpawner.SetActive(false);
+        FruitPoints.GetComponent<FruitPoints>().RecordPoints();
     }
 
     public void FrostPill()

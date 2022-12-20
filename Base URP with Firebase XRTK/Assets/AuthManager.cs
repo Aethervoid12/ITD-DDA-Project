@@ -57,7 +57,7 @@ public class AuthManager : MonoBehaviour
             else if (task.IsCompleted)
             {
                 Firebase.Auth.FirebaseUser newPlayer = task.Result;
-                SceneManager.LoadScene(1);
+                //SceneManager.LoadScene(1);
                 Debug.LogFormat("User signed in successfully: ({0})", newPlayer.UserId);
                 string uid = newPlayer.UserId;
                 var epochStart = new System.DateTime(1970, 1, 1, 8, 0, 0, System.DateTimeKind.Utc);
@@ -114,7 +114,7 @@ public class AuthManager : MonoBehaviour
                 Debug.LogFormat("User ID: {0}", currentPlayer.UserId);
                 Debug.LogFormat("User signed in successfully: {0} {1}", currentPlayer.DisplayName, currentPlayer.UserId);
                 Debug.LogFormat("Using current user {0}", auth.CurrentUser.Email);
-                SceneManager.LoadScene(1);
+                //SceneManager.LoadScene(1);
             }
         });
     }
