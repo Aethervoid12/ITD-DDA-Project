@@ -55,6 +55,7 @@ The trajectory of the mesh prefabs cutting is not completely correct.
 There is only 1 gaming option in this project.
 (Fruit Ninja has different options (Classic, Arcade, Zen)
 
+Player is only able to use 1 sword. (Thoughs of using two swords but problems arise).
 #### Tin Can Destruction
 The tin can prefab may not be placed in the correct position upon entering the game (Possibly due to some wrong settings in the rigid body component）
 
