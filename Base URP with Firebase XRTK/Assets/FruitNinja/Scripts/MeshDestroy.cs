@@ -31,12 +31,12 @@ public class MeshDestroy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Check to see if projectiles ot slice fully.
         if (BladeEnter == true && BladeExit == true)
         {
             Debug.Log("Cut Mesh");
             DestroyMesh();
         }
-
         Invoke("SelfDestruct", 5.0f);
         //Only use these two int speed.
         // 1 = normal falling speed.
@@ -45,9 +45,11 @@ public class MeshDestroy : MonoBehaviour
     }
     public void SelfDestruct()
     {
+        //This is to destroy prefabs in the hierarchy, not to overcrowd.
         Destroy(gameObject);
         Debug.Log("Fruit Self-Destruct!!");
     }
+    //Destory itself if contact with the floor
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Floor")
@@ -55,17 +57,7 @@ public class MeshDestroy : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    public void FrostPill()
-    {
-        fallingSpeed = 0.5f;
-        Invoke("Normal", 10.0f);
-    }
-
-    public void Normal()
-    {
-        fallingSpeed = 1f;
-    }
-
+    //Function to slice off the mesh.
     private void DestroyMesh()
     {
         var originalMesh = GetComponent<MeshFilter>().mesh;
@@ -337,6 +329,8 @@ public class MeshDestroy : MonoBehaviour
         }
 
     }
+    //Collider to check if projectiles got come incontact with the blade.
+    //For both Enter & Exit
     void OnTriggerEnter(Collider collider)
     {
         if (collider.gameObject.tag == "Blade")

@@ -13,6 +13,7 @@ public class SlashItManager : MonoBehaviour
     public GameObject FinalScore;
     public GameObject FruitPoints;
 
+    //Function GameManager of Starting of the game.
     public void StartGame()
     {
         StartMenu.SetActive(false);
@@ -22,6 +23,7 @@ public class SlashItManager : MonoBehaviour
         FruitSpawner.SetActive(true);
         FruitSpawner.GetComponent<FruitSpawner>().StartGame();
     }
+    //Function for when the games as ended.
     public void EndGame()
     {
         StartMenu.SetActive(false);
@@ -31,7 +33,7 @@ public class SlashItManager : MonoBehaviour
         FruitSpawner.SetActive(false);
         FruitPoints.GetComponent<FruitPoints>().RecordPoints();
     }
-
+    //Function for what happens when player slash a frostpill.
     public void FrostPill()
     {
         FruitSpawner.SetActive(false);
@@ -42,6 +44,7 @@ public class SlashItManager : MonoBehaviour
         SlowFruitSpawner2.GetComponent<SlowFruitSpawner>().StartGame();
         Invoke("Normal", 5.0f);
     }
+    //Revert everything to normal after slashing FrostPill.
     public void Normal()
     {
         FruitSpawner.SetActive(true);

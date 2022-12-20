@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BaseballHighlight : MonoBehaviour
 {
+    //Function for highlight when enter hovered.
     public void OnHover()
     {
         //Get all the renderers of this object
@@ -15,7 +16,7 @@ public class BaseballHighlight : MonoBehaviour
             renderer.material.EnableKeyword("_EMISSION");
         }
     }
-
+    //Function to stop highlight when exit hovered.
     public void ExitHover()
     {
         //Get all the renderers of this object

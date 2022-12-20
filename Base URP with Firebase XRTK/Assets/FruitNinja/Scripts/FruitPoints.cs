@@ -15,12 +15,14 @@ public class FruitPoints : MonoBehaviour
     Firebase.Auth.FirebaseAuth auth;
     DatabaseReference mDatabaseRef;
     DatabaseReference dbPlayerStatsReference;
-    public int cutPoints;
+    /// ///////////////////////////////////////////
+    int cutPoints;
     public TextMeshProUGUI ScorePoints;
     public TextMeshProUGUI FinalScore;
     public GameObject MeshDestroy;
     public bool PowerUpBoost = false;
     int highScore = 0;
+    /// ///////////////////////////////////////////
     int leaderboardDate;
     string username;
     string userID;
@@ -36,6 +38,11 @@ public class FruitPoints : MonoBehaviour
     }
     void OnTriggerEnter(Collider collider)
     {
+        // Check to see if which projectile did the blade collide with.
+        //Different projectiles will have different effects on the game.
+        //RGB Cube are normal and give you 1 point each.
+        //Frost Pill causes the projectiles to slowly fall.
+        //PowerUp Pill gives double the points.
         if (collider.gameObject.tag == "Red")
         {
             slashEffect.Play();
@@ -118,19 +125,23 @@ public class FruitPoints : MonoBehaviour
             Invoke("Normal", 10.0f);
         }
     }
+    //Updating the scores in the text.
     void Update()
     {
         ScorePoints.text = cutPoints.ToString();
         FinalScore.text = cutPoints.ToString();
     }
+    //Reset for new game.
     public void Restart()
     {
         cutPoints = 0;
     }
+    //Function for when the PowerUp Boost ran out.
     public void Normal()
     {
         PowerUpBoost = false;
     }
+    //Register the new scores.
     private void WriteNewScore(string userId, string username, int highScore, int leaderboardDate)
     {
         Scores score = new Scores(username, highScore, leaderboardDate);

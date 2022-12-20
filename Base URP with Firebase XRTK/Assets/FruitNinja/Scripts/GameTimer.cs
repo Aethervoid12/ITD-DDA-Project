@@ -12,6 +12,7 @@ public class GameTimer : MonoBehaviour
     public TextMeshProUGUI timeText;
     public GameObject SlashItManager;
     public GameObject FruitSpawner;
+    public GameObject SlowFruitSpawner;
     // Update is called once per frame
     void Update()
     {
@@ -27,12 +28,16 @@ public class GameTimer : MonoBehaviour
 
         DisplayTime(timeValue);
 
-        if (timeValue < 12)
+        //When the countdwon reach 15, something special will happen.
+        if (timeValue < 15)
         {
+            //End game scenario.
             FruitSpawner.GetComponent<FruitSpawner>().FinalGame();
+            SlowFruitSpawner.GetComponent<SlowFruitSpawner>().FinalGame();
         }
     }
 
+    //Function for timer countdown.
     void DisplayTime(float timeToDisplay)
     {
         if (timeToDisplay < 0)
