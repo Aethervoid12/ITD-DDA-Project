@@ -25,7 +25,6 @@ public class AuthManager : MonoBehaviour
     public string username;
     public int creationTime;
     public string emailAddress;
-
     private void Awake()
     {
         //sets up firebase
@@ -163,5 +162,14 @@ public class AuthManager : MonoBehaviour
                 Debug.Log("Password reset email sent successfully.");
             });
         }
+    }
+    public void RestartScene()
+    {
+        Scene scene = SceneManager.GetActiveScene(); 
+        SceneManager.LoadScene(scene.name);
+    }
+    public void ChangeScene(int sceneToLoad)
+    {
+        SceneManager.LoadScene(sceneToLoad);
     }
 }
