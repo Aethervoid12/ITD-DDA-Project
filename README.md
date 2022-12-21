@@ -6,7 +6,7 @@ In CarnivalVR, player can explore and enjoy various types of its features and in
 players to react fast or equipped with some luck to achieve high score.
 
 The entire experience is short and sweet (takes about less than 20 minutes to finish), so the player won't have to worry to much about motion sickness for
-wearing the VR headset for too long.
+wearing the VR headset too long.
 
 ## ITD Deliverables
 ### List of CarnivalVR Features and its Interactions
@@ -55,6 +55,9 @@ The trajectory of the mesh prefabs cutting is not completely correct.
 There is only 1 gaming option in this project.
 (Fruit Ninja has different options (Classic, Arcade, Zen)
 
+Player is only able to use 1 sword. (Thoughs of using two swords but problems arise).
+#### Tin Can Destruction
+The tin can prefab may not be placed in the correct position upon entering the game (Possibly due to some wrong settings in the rigid body component）
 
 
 ## DDA Deliverables
