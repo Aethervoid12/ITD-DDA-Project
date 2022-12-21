@@ -123,8 +123,8 @@ public class AuthManager : MonoBehaviour
         //signs current user out
         if (auth.CurrentUser != null)
         {
-            auth.SignOut();
             SceneManager.LoadScene(0);
+            auth.SignOut();
         }
 
     }
